@@ -15,6 +15,19 @@ class UserRepository implements UserRepositoryInterface {
   @override
   Future<MineResponse<User?, DioError>> getData() async {
     try {
+      // How to use with API
+      // EndpointInfo endpointInfo = userEndpoint.getUser("1");
+      // var response = await apiService.invoke(
+      //   endpointInfo.endpoint,
+      //   method: endpointInfo.method,
+      // );
+      // GenericResponse<User?> genericResponse =
+      // GenericResponse<User?>.fromJson(response.data, (data) {
+      //   if (data is Map<String, dynamic>) {
+      //     return User.fromJson(data);
+      //   }
+      //   return null;
+      // });
       Map<String, dynamic> json = {
         "data": {
           "id": "1",
@@ -23,14 +36,14 @@ class UserRepository implements UserRepositoryInterface {
         "message": "success",
         "code": "SUCCESS",
       };
-      GenericResponse<User?> response =
+      GenericResponse<User?> genericResponse =
           GenericResponse<User?>.fromJson(json, (data) {
         if (data is Map<String, dynamic>) {
           return User.fromJson(data);
         }
         return null;
       });
-      return MineResponse.success(response);
+      return MineResponse.success(genericResponse);
     } on DioError catch (e) {
       return MineResponse.error(e);
     } catch (e) {
