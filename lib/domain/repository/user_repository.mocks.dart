@@ -5,7 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:four/domain/model/response.dart' as _i2;
+import 'package:dio/dio.dart' as _i6;
+import 'package:four/domain/model/mine_response.dart' as _i2;
 import 'package:four/domain/model/user.dart' as _i5;
 import 'package:four/domain/repository/user_repository.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
@@ -21,9 +22,9 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeGenericResponse_0<T> extends _i1.SmartFake
-    implements _i2.GenericResponse<T> {
-  _FakeGenericResponse_0(
+class _FakeResponseStatus_0<T, R> extends _i1.SmartFake
+    implements _i2.MineResponse<T, R> {
+  _FakeResponseStatus_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -38,13 +39,15 @@ class _FakeGenericResponse_0<T> extends _i1.SmartFake
 class MockUserRepositoryInterface extends _i1.Mock
     implements _i3.UserRepositoryInterface {
   @override
-  _i4.Future<_i2.GenericResponse<_i5.User?>> getData() => (super.noSuchMethod(
+  _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>> getData() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getData,
           [],
         ),
-        returnValue: _i4.Future<_i2.GenericResponse<_i5.User?>>.value(
-            _FakeGenericResponse_0<_i5.User?>(
+        returnValue:
+            _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>.value(
+                _FakeResponseStatus_0<_i5.User?, _i6.DioError?>(
           this,
           Invocation.method(
             #getData,
@@ -52,24 +55,26 @@ class MockUserRepositoryInterface extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.GenericResponse<_i5.User?>>.value(
-                _FakeGenericResponse_0<_i5.User?>(
+            _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>.value(
+                _FakeResponseStatus_0<_i5.User?, _i6.DioError?>(
           this,
           Invocation.method(
             #getData,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.GenericResponse<_i5.User?>>);
+      ) as _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>);
+
   @override
-  _i4.Future<_i2.GenericResponse<List<_i5.User>>> getManyData() =>
+  _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>> getManyData() =>
       (super.noSuchMethod(
         Invocation.method(
           #getManyData,
           [],
         ),
-        returnValue: _i4.Future<_i2.GenericResponse<List<_i5.User>>>.value(
-            _FakeGenericResponse_0<List<_i5.User>>(
+        returnValue:
+            _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>>.value(
+                _FakeResponseStatus_0<List<_i5.User>, _i6.DioError?>(
           this,
           Invocation.method(
             #getManyData,
@@ -77,13 +82,13 @@ class MockUserRepositoryInterface extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.GenericResponse<List<_i5.User>>>.value(
-                _FakeGenericResponse_0<List<_i5.User>>(
+            _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>>.value(
+                _FakeResponseStatus_0<List<_i5.User>, _i6.DioError?>(
           this,
           Invocation.method(
             #getManyData,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.GenericResponse<List<_i5.User>>>);
+      ) as _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>>);
 }

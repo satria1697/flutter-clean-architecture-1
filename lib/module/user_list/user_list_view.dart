@@ -22,7 +22,14 @@ class UserListPage extends StatelessWidget {
         child: BlocBuilder<UserListCubit, UserListState>(
           builder: (context, state) {
             if (state.dataState == DataState.loading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state.dataState == DataState.fail) {
+              return const Center(
+                child: Text("failed to fetch data"),
+              );
             }
             return ListView.builder(
               itemCount: state.data.length,

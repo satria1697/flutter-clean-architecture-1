@@ -1,6 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'response.g.dart';
+part 'generic_response.g.dart';
+
+enum Code {
+  SUCCESS,
+  FAILED,
+}
 
 @JsonSerializable(
   genericArgumentFactories: true,
@@ -13,7 +18,7 @@ class GenericResponse<T> {
   });
 
   final T? data;
-  final String code;
+  final Code code;
   final String message;
 
   factory GenericResponse.fromJson(

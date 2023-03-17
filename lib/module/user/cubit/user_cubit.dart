@@ -1,23 +1,24 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:four/domain/model/user.dart';
-import 'package:four/domain/repository/user_repository.dart';
-import 'package:four/initiate_get_it.dart';
+import 'package:four/use_case/user_use_case.dart';
 
 part 'user_state.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit() : super(const UserState.init());
-  final UserRepositoryInterface _userRepository =
-      getIt<UserRepositoryInterface>();
+
+  final UserUseCase _userUseCase = UserUseCase();
 
   Future<void> getData() async {
     emit(const UserState.loading());
     await Future.delayed(const Duration(seconds: 1));
-    var response = await _userRepository.getData();
-    var data = response.data;
-    if (data is User) {
-      emit(UserState.success(data));
+    var response = await _userUseCase.getUserExecute();
+
+    if (response.isError) {
+      emit(UserState.fail(response.message));
+      return;
     }
+    emit(UserState.success(response.data));
   }
 }

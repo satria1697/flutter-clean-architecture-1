@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'response.dart';
+part of 'generic_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -12,7 +12,7 @@ GenericResponse<T> _$GenericResponseFromJson<T>(
 ) =>
     GenericResponse<T>(
       data: _$nullableGenericFromJson(json['data'], fromJsonT),
-      code: json['code'] as String,
+      code: $enumDecode(_$CodeEnumMap, json['code']),
       message: json['message'] as String,
     );
 
@@ -22,7 +22,7 @@ Map<String, dynamic> _$GenericResponseToJson<T>(
 ) =>
     <String, dynamic>{
       'data': _$nullableGenericToJson(instance.data, toJsonT),
-      'code': instance.code,
+      'code': _$CodeEnumMap[instance.code]!,
       'message': instance.message,
     };
 
@@ -31,6 +31,11 @@ T? _$nullableGenericFromJson<T>(
   T Function(Object? json) fromJson,
 ) =>
     input == null ? null : fromJson(input);
+
+const _$CodeEnumMap = {
+  Code.SUCCESS: 'SUCCESS',
+  Code.FAILED: 'FAILED',
+};
 
 Object? _$nullableGenericToJson<T>(
   T? input,

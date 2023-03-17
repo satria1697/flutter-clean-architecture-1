@@ -1,10 +1,12 @@
-import 'package:four/domain/model/response.dart';
+import 'package:dio/dio.dart';
+import 'package:four/domain/model/generic_response.dart';
+import 'package:four/domain/model/mine_response.dart';
 import 'package:four/domain/model/user.dart';
 import 'package:four/domain/repository/user_repository.dart';
 
 class UserRepository implements UserRepositoryInterface {
   @override
-  Future<GenericResponse<User?>> getData() async {
+  Future<MineResponse<User?, DioError>> getData() async {
     Map<String, dynamic> json = {
       "data": {
         "id": "1",
@@ -20,11 +22,11 @@ class UserRepository implements UserRepositoryInterface {
       }
       return null;
     });
-    return response;
+    return MineResponse.success(response);
   }
 
   @override
-  Future<GenericResponse<List<User>>> getManyData() async {
+  Future<MineResponse<List<User>, DioError?>> getManyData() async {
     Map<String, dynamic> json = {
       "data": [
         {
@@ -47,6 +49,6 @@ class UserRepository implements UserRepositoryInterface {
       return [];
     });
 
-    return response;
+    return MineResponse.success(response);
   }
 }

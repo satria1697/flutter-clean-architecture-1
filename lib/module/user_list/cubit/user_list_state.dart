@@ -4,10 +4,12 @@ class UserListState extends Equatable {
   const UserListState._({
     this.dataState = DataState.init,
     this.data = const [],
+    this.errorMessage = "",
   });
 
   final DataState dataState;
   final List<User> data;
+  final String errorMessage;
 
   const UserListState.init() : this._();
 
@@ -17,6 +19,12 @@ class UserListState extends Equatable {
       : this._(
           dataState: DataState.success,
           data: data,
+        );
+
+  const UserListState.fail(String errorMessage)
+      : this._(
+          dataState: DataState.fail,
+          errorMessage: errorMessage,
         );
 
   @override
