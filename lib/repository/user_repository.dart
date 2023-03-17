@@ -26,6 +26,11 @@ class UserRepository implements UserRepositoryInterface {
       return MineResponse.success(response);
     } on DioError catch (e) {
       return MineResponse.error(e);
+    } catch (e) {
+      return MineResponse.error(DioError(
+        requestOptions: RequestOptions(),
+        message: e.toString(),
+      ));
     }
   }
 
@@ -57,6 +62,11 @@ class UserRepository implements UserRepositoryInterface {
       return MineResponse.success(response);
     } on DioError catch (e) {
       return MineResponse.error(e);
+    } catch (e) {
+      return MineResponse.error(DioError(
+        requestOptions: RequestOptions(),
+        message: e.toString(),
+      ));
     }
   }
 }
