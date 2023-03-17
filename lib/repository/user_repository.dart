@@ -7,48 +7,56 @@ import 'package:four/domain/repository/user_repository.dart';
 class UserRepository implements UserRepositoryInterface {
   @override
   Future<MineResponse<User?, DioError>> getData() async {
-    Map<String, dynamic> json = {
-      "data": {
-        "id": "1",
-        "name": "Oji",
-      },
-      "message": "success",
-      "code": "SUCCESS",
-    };
-    GenericResponse<User?> response =
-        GenericResponse<User?>.fromJson(json, (data) {
-      if (data is Map<String, dynamic>) {
-        return User.fromJson(data);
-      }
-      return null;
-    });
-    return MineResponse.success(response);
+    try {
+      Map<String, dynamic> json = {
+        "data": {
+          "id": "1",
+          "name": "Oji",
+        },
+        "message": "success",
+        "code": "SUCCESS",
+      };
+      GenericResponse<User?> response =
+          GenericResponse<User?>.fromJson(json, (data) {
+        if (data is Map<String, dynamic>) {
+          return User.fromJson(data);
+        }
+        return null;
+      });
+      return MineResponse.success(response);
+    } on DioError catch (e) {
+      return MineResponse.error(e);
+    }
   }
 
   @override
   Future<MineResponse<List<User>, DioError?>> getManyData() async {
-    Map<String, dynamic> json = {
-      "data": [
-        {
-          "id": "1",
-          "name": "Oji",
-        },
-        {
-          "id": "2",
-          "name": "Fahrul",
+    try {
+      Map<String, dynamic> json = {
+        "data": [
+          {
+            "id": "1",
+            "name": "Oji",
+          },
+          {
+            "id": "2",
+            "name": "Fahrul",
+          }
+        ],
+        "message": "success",
+        "code": "SUCCESS",
+      };
+      GenericResponse<List<User>> response =
+          GenericResponse<List<User>>.fromJson(json, (data) {
+        if (data is List<Map<String, dynamic>>) {
+          return data.map((e) => User.fromJson(e)).toList();
         }
-      ],
-      "message": "success",
-      "code": "SUCCESS",
-    };
-    GenericResponse<List<User>> response =
-        GenericResponse<List<User>>.fromJson(json, (data) {
-      if (data is List<Map<String, dynamic>>) {
-        return data.map((e) => User.fromJson(e)).toList();
-      }
-      return [];
-    });
+        return [];
+      });
 
-    return MineResponse.success(response);
+      return MineResponse.success(response);
+    } on DioError catch (e) {
+      return MineResponse.error(e);
+    }
   }
 }
