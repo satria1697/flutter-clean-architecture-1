@@ -22,9 +22,9 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeResponseStatus_0<T, R> extends _i1.SmartFake
+class _FakeMineResponse_0<T, R> extends _i1.SmartFake
     implements _i2.MineResponse<T, R> {
-  _FakeResponseStatus_0(
+  _FakeMineResponse_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -47,7 +47,7 @@ class MockUserRepositoryInterface extends _i1.Mock
         ),
         returnValue:
             _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>.value(
-                _FakeResponseStatus_0<_i5.User?, _i6.DioError?>(
+                _FakeMineResponse_0<_i5.User?, _i6.DioError?>(
           this,
           Invocation.method(
             #getData,
@@ -56,7 +56,7 @@ class MockUserRepositoryInterface extends _i1.Mock
         )),
         returnValueForMissingStub:
             _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>.value(
-                _FakeResponseStatus_0<_i5.User?, _i6.DioError?>(
+                _FakeMineResponse_0<_i5.User?, _i6.DioError?>(
           this,
           Invocation.method(
             #getData,
@@ -64,7 +64,6 @@ class MockUserRepositoryInterface extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.MineResponse<_i5.User?, _i6.DioError?>>);
-
   @override
   _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>> getManyData() =>
       (super.noSuchMethod(
@@ -74,7 +73,7 @@ class MockUserRepositoryInterface extends _i1.Mock
         ),
         returnValue:
             _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>>.value(
-                _FakeResponseStatus_0<List<_i5.User>, _i6.DioError?>(
+                _FakeMineResponse_0<List<_i5.User>, _i6.DioError?>(
           this,
           Invocation.method(
             #getManyData,
@@ -83,7 +82,7 @@ class MockUserRepositoryInterface extends _i1.Mock
         )),
         returnValueForMissingStub:
             _i4.Future<_i2.MineResponse<List<_i5.User>, _i6.DioError?>>.value(
-                _FakeResponseStatus_0<List<_i5.User>, _i6.DioError?>(
+                _FakeMineResponse_0<List<_i5.User>, _i6.DioError?>(
           this,
           Invocation.method(
             #getManyData,

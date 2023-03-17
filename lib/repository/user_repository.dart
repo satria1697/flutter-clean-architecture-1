@@ -1,10 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:four/constant/network/endpoint/user.dart';
 import 'package:four/domain/model/generic_response.dart';
 import 'package:four/domain/model/mine_response.dart';
 import 'package:four/domain/model/user.dart';
 import 'package:four/domain/repository/user_repository.dart';
+import 'package:four/domain/service/api_service.dart';
 
 class UserRepository implements UserRepositoryInterface {
+  const UserRepository(this.apiService, this.userEndpoint);
+
+  final ApiServiceInterface apiService;
+  final UserEndpoint userEndpoint;
+
   @override
   Future<MineResponse<User?, DioError>> getData() async {
     try {
