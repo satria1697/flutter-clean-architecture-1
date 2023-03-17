@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class ResponseStatus<T> extends Equatable {
+class CleanResponse<T> extends Equatable {
   final T data;
   final String message;
   final bool isError;
 
-  const ResponseStatus({
+  const CleanResponse({
     required this.data,
     required this.message,
     this.isError = false,
