@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:four/initiate_get_it.dart';
 import 'package:four/router/router.dart';
 import 'package:logger/logger.dart';
 
 var logger = Logger();
 
 void main() {
+  initiateGetIt();
   runApp(MyApp());
 }
 

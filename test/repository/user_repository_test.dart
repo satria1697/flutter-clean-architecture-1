@@ -4,10 +4,10 @@ import 'package:four/repository/user_repository.dart';
 void main() {
   var userRepository = UserRepository();
   test("user repository", () {
-    userRepository.getUser();
+    userRepository.getData();
   });
 
   test("user repository", () {
-    userRepository.getManyUsers();
+    userRepository.getManyData();
   });
 }

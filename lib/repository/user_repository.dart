@@ -1,8 +1,10 @@
 import 'package:four/domain/model/response.dart';
 import 'package:four/domain/model/user.dart';
+import 'package:four/domain/repository/user_repository.dart';
 
-class UserRepository {
-  Future<GenericResponse<User?>> getUser() async {
+class UserRepository implements UserRepositoryInterface {
+  @override
+  Future<GenericResponse<User?>> getData() async {
     Map<String, dynamic> json = {
       "data": {
         "id": "1",
@@ -21,7 +23,8 @@ class UserRepository {
     return response;
   }
 
-  Future<GenericResponse<List<User>>> getManyUsers() async {
+  @override
+  Future<GenericResponse<List<User>>> getManyData() async {
     Map<String, dynamic> json = {
       "data": [
         {
